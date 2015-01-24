@@ -12,7 +12,7 @@ public class Bouncy : MonoBehaviour {
 	void Start(){
 		anim = GetComponent<Animator>();
 		if(anim != null){
-			anim.StopPlayback();
+			anim.Play("spring", -1, 10f);
 		}
 	}
 
