@@ -1,43 +1,25 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
+*.suo
+*.sln
+*.svd
+*.userprefs
+*.pidb
 
-# Folder config file
-Desktop.ini
+*.booproj
+*.csproj
+*.unityproj
 
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
+/[Ee]xportedObj/
+/[Oo]bj
 
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
 
-# =========================
-# Operating System Files
-# =========================
+[Ll]ibrary/
+[Tt]emp/
 
-# OSX
-# =========================
+.DS_Store?
+*.Trashes
+*.swp
 
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Icon must end with two \r
-Icon
-
-# Thumbnails
 ._*
-
-# Files that might appear on external disk
 .Spotlight-V100
-.Trashes
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
+ehthumbs.db
+Thumbs.db
