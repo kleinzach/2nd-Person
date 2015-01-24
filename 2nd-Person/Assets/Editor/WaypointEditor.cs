@@ -13,6 +13,7 @@ public class WaypointEditor : Editor
 		w.speed = EditorGUILayout.FloatField("Speed", w.speed);
 		w.transform.position = (Vector2)EditorGUILayout.Vector2Field("Position", w.transform.position);
 		w.next = (Waypoint)EditorGUILayout.ObjectField("Next Waypoint", w.next, typeof(Waypoint), true, null);
+		w.target = (Waypoint)EditorGUILayout.ObjectField("Trigger Target", w.target, typeof(Waypoint), true, null);
 		w.open = EditorGUILayout.Toggle("Available", w.open);
 		EditorGUILayout.BeginHorizontal ();
 		if (GUILayout.Button ("Use"))
