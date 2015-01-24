@@ -9,6 +9,8 @@ public class Waypoint : Usable {
 
 	public bool open;
 
+	public Usable triggeredObject;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -16,5 +18,11 @@ public class Waypoint : Usable {
 	
 	public override void use(){
 		open = true;
+	}
+
+	public void trigger(){
+		if(triggeredObject != null){
+			triggeredObject.use();
+		}
 	}
 }
