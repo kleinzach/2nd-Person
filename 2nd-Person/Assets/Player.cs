@@ -55,15 +55,17 @@ public class Player : MonoBehaviour {
 			velocity.y -= gravity;
 		}
 
-		if(other != null){
-			if(other.gameObject.layer == LayerMask.NameToLayer("Mushroom")){
-				velocity.y = other.gameObject.GetComponent<Bouncy>().bounceForce;
-			}
-		}
-
 		handleClimb();
 
-		velocity.y = Mathf.Clamp(velocity.y,-maxFallSpeed,maxFallSpeed);
+		velocity.y = Mathf.Max(velocity.y,-maxFallSpeed);
+		
+		if(other != null){
+			if(other.gameObject.layer == LayerMask.NameToLayer("Mushroom")){
+				Bouncy b = other.gameObject.GetComponent<Bouncy>();
+				velocity.y = b.bounceForce;
+				b.bounce();
+			}
+		}
 		this.rigidbody.velocity = velocity;
 	}
 
