@@ -13,8 +13,8 @@ public class PathEditor : Editor {
 		CustomEditorUtil.text(p.name);
 		EditorGUI.indentLevel++;
 		EditorGUILayout.BeginHorizontal ();
-		
-		
+		if (GUILayout.Button("Hide path handle"))
+			Path.weird = !Path.weird;
 		EditorGUILayout.EndHorizontal ();
 		if (GUI.changed)
 			EditorUtility.SetDirty (target);

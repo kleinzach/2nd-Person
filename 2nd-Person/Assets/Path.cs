@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class Path : MonoBehaviour {
 
+	public static bool weird;
+
 	[Range(0.1f, 2)]
 	public float wSize = 0.5f;
 
@@ -19,7 +21,7 @@ public class Path : MonoBehaviour {
 	public void OnDrawGizmosSelected(){
 		Gizmos.color = Color.cyan;
 		foreach(Waypoint w in waypoints()){
-			Gizmos.DrawSphere(w.transform.position, wSize);
+			Gizmos.DrawSphere(w.pos, wSize);
 		}
 	}
 }

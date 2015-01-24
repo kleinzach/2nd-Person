@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Waypoint : Usable{
+public class Waypoint : Usable {
 
 	public Waypoint next;
+	public Vector3 pos;
 
 	public float speed;
 
@@ -11,13 +12,17 @@ public class Waypoint : Usable{
 
 	public Usable target;
 
-	public void use(){
+	public override void use(){
 		open = true;
 	}
 
 	public void trigger(){
 		if (target != null)
 			target.use ();
+	}
+
+	public void Start(){
+		pos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 	}
 
 	public void OnDrawGizmosSelected(){

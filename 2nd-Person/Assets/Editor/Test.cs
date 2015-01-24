@@ -6,14 +6,14 @@ using System;
 using System.Reflection;
 
 
-[CustomEditor(typeof(GameObject))]
+[CustomEditor(typeof(Transform))]
 public class TestEditor : Editor {
-	
+
 	public void OnSceneGUI(){
-		Tools.current = Tool.None;
-		GameObject obj = ((GameObject)target);
-		if (!obj.name.Contains("Path"))
-			obj.transform.position = Handles.PositionHandle(obj.transform.position, Quaternion.identity);
+		Tools.current = Path.weird ? Tool.None : Tool.Move;
+		Transform trans = ((Transform)target);
+		if (!trans.gameObject.name.Contains("Path"))
+			trans.position = Handles.PositionHandle(trans.position, Quaternion.identity);
 	}
 	
 	
