@@ -18,6 +18,9 @@ public class Hero : PathFollower {
 	
 	// Update is called once per frame
 	void Update () {
+		if(nextWaypoint == null){
+			return;
+		}
 		if(!nextWaypoint.open && !blocked){
 			blocked = true;
 			textbox.text = randomString(blockedText);
