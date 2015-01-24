@@ -10,6 +10,7 @@ public class Trigger : MonoBehaviour {
 		if(col.gameObject.tag == "Player"){
 			if(target != null){
 				target.use();
+				Destroy(this.gameObject);
 			}
 		}
 	}
