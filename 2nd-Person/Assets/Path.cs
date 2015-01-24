@@ -4,33 +4,22 @@ using System.Collections.Generic;
 
 public class Path : MonoBehaviour {
 
-	public List<Waypoint> waypoints = new List<Waypoint>();
-	private List<int> ids = new List<int>();
+	[Range(0.1f, 2)]
+	public float wSize = 0.5f;
 
-
-	void Start () {
-	
-	}
-
-	void Update () {
-	
-	}
-
-	public Waypoint getWaypoint(int id){
-		return waypoints [id];
-	}
-
-	public void newWaypoint(){
-		if (ids.Count != 0){
-			waypoints[ids[0]] = new Waypoint(this, ids[0]);
-			ids.RemoveAt(0);
+	public List<Waypoint> waypoints(){
+		List<Waypoint> ws = new List<Waypoint> ();
+		foreach(Component c in GetComponentsInChildren(typeof(Waypoint))){
+			ws.Add((Waypoint)c);
 		}
-		else
-			waypoints.Add(new Waypoint(this, waypoints.Count));
+		return ws;
 	}
 
-	public void removeWaypoint(Waypoint w){
-		waypoints.Remove(w);
-		ids.Add (w.id);
+
+	public void OnDrawGizmosSelected(){
+		Gizmos.color = Color.cyan;
+		foreach(Waypoint w in waypoints()){
+			Gizmos.DrawSphere(w.position, wSize);
+		}
 	}
 }

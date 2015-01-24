@@ -17,8 +17,8 @@ public class WaypointEditor : Editor
 		EditorGUILayout.BeginHorizontal ();
 		if (GUILayout.Button ("Use"))
 			w.use();
-		
-			
+		if (GUILayout.Button ("Trigger"))
+			w.trigger();
 		EditorGUILayout.EndHorizontal ();
 		if (GUI.changed)
 			EditorUtility.SetDirty (target);
