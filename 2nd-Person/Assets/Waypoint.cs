@@ -2,8 +2,7 @@
 using System.Collections;
 
 public class Waypoint : Usable{
-	
-	public Vector2 position;
+
 	public Waypoint next;
 
 	public float speed;

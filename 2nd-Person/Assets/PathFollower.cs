@@ -10,7 +10,7 @@ public class PathFollower : MonoBehaviour {
 	void FixedUpdate () {
 		if(nextWaypoint != null && nextWaypoint.open){
 			float speed = nextWaypoint.speed;
-			Vector2 diff = nextWaypoint.position - (Vector2)this.transform.position;
+			Vector2 diff = nextWaypoint.transform.position - this.transform.position;
 			this.transform.Translate((diff).normalized * speed);
 			if(diff.magnitude < speed){
 				arrive();
@@ -19,7 +19,7 @@ public class PathFollower : MonoBehaviour {
 	}
 
 	void arrive(){
-		this.transform.position = nextWaypoint.position;
+		this.transform.position = nextWaypoint.transform.position;
 		nextWaypoint.trigger();
 		nextWaypoint = nextWaypoint.next;
 	}

@@ -15,12 +15,12 @@ public class PathEditor : Editor {
 		EditorGUILayout.EndHorizontal ();
 		if (GUI.changed)
 			EditorUtility.SetDirty (target);
+		foreach (Waypoint w in p.waypoints()) {
+			Vector3 v = Handles.PositionHandle(w.transform.position, Quaternion.identity);
+		}
 	}
 
-	public override void OnSceneGUI()	{
-		Path p = (Path)target;
-		foreach (Waypoint w in p.waypoints()) {
-			Handles.PositionHandle(w.position, Quaternion.identity);
-		}
+	public void OnSczeneGUI()	{
+
 	}
 }

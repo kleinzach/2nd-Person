@@ -11,7 +11,7 @@ public class WaypointEditor : Editor
 		CustomEditorUtil.text(w.name);
 		EditorGUI.indentLevel++;
 		w.speed = EditorGUILayout.FloatField("Speed", w.speed);
-		w.position = (Vector2)EditorGUILayout.Vector2Field("Position", w.position);
+		w.transform.position = (Vector2)EditorGUILayout.Vector2Field("Position", w.transform.position);
 		w.next = (Waypoint)EditorGUILayout.ObjectField("Next Waypoint", w.next, typeof(Waypoint), true, null);
 		w.open = EditorGUILayout.Toggle("Available", w.open);
 		EditorGUILayout.BeginHorizontal ();

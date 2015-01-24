@@ -19,7 +19,7 @@ public class Path : MonoBehaviour {
 	public void OnDrawGizmosSelected(){
 		Gizmos.color = Color.cyan;
 		foreach(Waypoint w in waypoints()){
-			Gizmos.DrawSphere(w.position, wSize);
+			Gizmos.DrawSphere(w.transform.position, wSize);
 		}
 	}
 }
