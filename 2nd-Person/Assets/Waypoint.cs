@@ -1,8 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
 public class Waypoint : Usable {
+	[SerializeField]
+	private int id;
+	[SerializeField]
+	private bool folded;
 
+	public Vector2 position;
 	public Waypoint next;
 
 	public float speed;

@@ -3,7 +3,9 @@ using System.Collections;
 
 public class Pit : Usable {
 
+	public Collider target;
+
 	public override void use(){
-		this.collider.isTrigger = false;
+		target.isTrigger = false;
 	}
 }
