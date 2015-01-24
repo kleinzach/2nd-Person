@@ -15,6 +15,9 @@ public class Player : MonoBehaviour {
 
 	private Vector3 velocity = new Vector3();
 
+	private bool climbing = false;
+	private bool canClimb = false;
+
 	void Start(){
 		distToGround = collider.bounds.extents.y;
 	}
@@ -26,7 +29,8 @@ public class Player : MonoBehaviour {
 
 		float jump = Input.GetAxis("Jump");
 
-		bool onGround = IsGrounded();
+		Collider other = Ground();
+		bool onGround = other != null;
 
 		velocity.x = h * speed;
 
@@ -46,10 +50,29 @@ public class Player : MonoBehaviour {
 
 			velocity.y -= gravity;
 		}
+
+		if(other != null){
+			Debug.Log ("Bounce");
+			if(other.gameObject.layer == LayerMask.NameToLayer("Mushroom")){
+				velocity.y = other.gameObject.GetComponent<Bouncy>().bounceForce;
+			}
+		}
+
 		this.rigidbody.velocity = velocity;
 	}
 
-	bool IsGrounded() {
-		return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
+	Collider Ground() {
+		RaycastHit hit;
+		Physics.Raycast(transform.position, -Vector3.up, out hit, distToGround + 0.1f);
+		return hit.collider;
 	}
+
+	void OnTriggerEnter(){
+		canClimb = true;
+	}
+
+	void OnTriggerExit(){
+		canClimb = false;
+	}
+
 }
