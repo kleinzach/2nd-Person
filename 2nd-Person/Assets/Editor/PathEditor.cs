@@ -2,6 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using System;
+using System.Reflection;
+
 
 [CustomEditor(typeof(Path))]
 public class PathEditor : Editor {
@@ -15,12 +18,13 @@ public class PathEditor : Editor {
 		EditorGUILayout.EndHorizontal ();
 		if (GUI.changed)
 			EditorUtility.SetDirty (target);
-		foreach (Waypoint w in p.waypoints()) {
-			Vector3 v = Handles.PositionHandle(w.transform.position, Quaternion.identity);
-		}
 	}
 
-	public void OnSczeneGUI()	{
-
+	public void OnSceneGUI()	{
+		Path p = (Path)target;
+		foreach (Waypoint w in p.waypoints())
+			w.transform.position = Handles.PositionHandle(w.transform.position, Quaternion.identity);
 	}
+
+
 }

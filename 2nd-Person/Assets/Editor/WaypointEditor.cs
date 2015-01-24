@@ -23,4 +23,18 @@ public class WaypointEditor : Editor
 		if (GUI.changed)
 			EditorUtility.SetDirty (target);
 	}
+
+	public void OnSceneGUI()	{
+		Waypoint www = ((Waypoint)target);
+		Transform t = www.transform.parent;
+		if (t != null){
+			Path p = t.gameObject.GetComponent<Path>();
+			if (p != null)
+				foreach (Waypoint w in p.waypoints())
+					if (www != w)
+						w.transform.position = Handles.PositionHandle(w.transform.position, Quaternion.identity);
+		}
+	}
+
+
 }
