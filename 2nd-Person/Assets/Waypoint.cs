@@ -11,7 +11,7 @@ public class Waypoint : Usable{
 
 	public Usable target;
 
-	public void use(){
+	public override void use(){
 		open = true;
 	}
 

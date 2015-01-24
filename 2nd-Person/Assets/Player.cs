@@ -41,7 +41,7 @@ public class Player : MonoBehaviour {
 		velocity.x = h * speed;
 
 		jumping -= Time.fixedDeltaTime;
-		if(onGround && jump > .5f){
+		if(onGround && jump > .5f && other.gameObject.layer != LayerMask.NameToLayer("Mushroom")){
 			jumping = jumpTime;
 		}
 		if(jump > .5f && jumping > 0){
