@@ -12,7 +12,14 @@ public class IngameMenuManager : MonoBehaviour {
 	}
 	
 	public void toggleMenu(){
-		menu.gameObject.SetActive(!menu.gameObject.activeSelf);
+		bool newState = !menu.gameObject.activeSelf;
+		menu.gameObject.SetActive(newState);
+		if(newState){
+			Time.timeScale = 0f;
+		}
+		else{
+			Time.timeScale = 1f;
+		}
 	}
 
 	void Update(){
