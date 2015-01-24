@@ -85,8 +85,13 @@ public class Player : MonoBehaviour {
 			velocity.y = v*speed;
 			velocity.x = 0;
 		}
-		if(!canClimb || jump > .5f){
+		if(!canClimb){
 			climbing = false;
+		}
+		if(climbing && jump > .5f){
+			climbing = false;
+			jumping = jumpTime;
+			velocity.y += jumpForce;
 		}
 	}
 
