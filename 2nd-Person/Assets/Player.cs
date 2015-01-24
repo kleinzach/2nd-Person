@@ -14,6 +14,7 @@ public class Player : MonoBehaviour {
 	private float distToGround = 0;
 
 	private Vector3 velocity = new Vector3();
+	public float maxFallSpeed;
 
 	private float h;
 	private float v;
@@ -39,7 +40,6 @@ public class Player : MonoBehaviour {
 
 		velocity.x = h * speed;
 
-		this.rigidbody.AddForce(h * speed,0,0);
 		jumping -= Time.fixedDeltaTime;
 		if(onGround && jump > .5f){
 			jumping = jumpTime;
@@ -63,6 +63,7 @@ public class Player : MonoBehaviour {
 
 		handleClimb();
 
+		velocity.y = Mathf.Clamp(velocity.y,-maxFallSpeed,maxFallSpeed);
 		this.rigidbody.velocity = velocity;
 	}
 
@@ -78,6 +79,7 @@ public class Player : MonoBehaviour {
 			velocity.y = 0;
 			climbing = true;
 			this.transform.position = new Vector3(climbSnap,this.transform.position.y,this.transform.position.z);
+			velocity.x = 0;
 		}
 		if(climbing){
 			velocity.y = v*speed;
@@ -89,13 +91,17 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider col){
-		canClimb = true;
-		climbSnap = col.transform.position.x;
+		if(col.gameObject.layer == LayerMask.NameToLayer("Rope")){
+			canClimb = true;
+			climbSnap = col.transform.position.x;
+		}
 	}
 
 	void OnTriggerExit(Collider col){
-		canClimb = false;
-		climbSnap = col.transform.position.x;
+		if(col.gameObject.layer == LayerMask.NameToLayer("Rope")){
+			canClimb = false;
+			climbSnap = col.transform.position.x;
+		}
 	}
 
 }
