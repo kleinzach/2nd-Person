@@ -14,9 +14,15 @@ public class Player : MonoBehaviour {
 	private float distToGround = 0;
 
 	private Vector3 velocity = new Vector3();
+	public float maxFallSpeed;
+
+	private float h;
+	private float v;
+	private float jump;
 
 	private bool climbing = false;
-	private bool canClimb = false;
+	public bool canClimb = false;
+	public float climbSnap = 0;
 
 	void Start(){
 		distToGround = collider.bounds.extents.y;
@@ -24,40 +30,40 @@ public class Player : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
-		float h = Input.GetAxis("Horizontal");
-		float v = Input.GetAxis("Vertical");
+		h = Input.GetAxis("Horizontal");
+		v = Input.GetAxis("Vertical");
 
-		float jump = Input.GetAxis("Jump");
+		jump = Input.GetAxis("Jump");
 
 		Collider other = Ground();
 		bool onGround = other != null;
 
 		velocity.x = h * speed;
 
-		this.rigidbody.AddForce(h * speed,0,0);
 		jumping -= Time.fixedDeltaTime;
 		if(onGround && jump > .5f){
 			jumping = jumpTime;
 		}
 		if(jump > .5f && jumping > 0){
-			Debug.Log("Jump");
 			velocity.y += jumpForce;
 		}
 		else if(jump <= .5f){
 			jumping = 0;
 		}
-		if(!onGround && jumping <= 0){
+		if(!onGround && jumping <= 0 && !climbing){
 
 			velocity.y -= gravity;
 		}
 
 		if(other != null){
-			Debug.Log ("Bounce");
 			if(other.gameObject.layer == LayerMask.NameToLayer("Mushroom")){
 				velocity.y = other.gameObject.GetComponent<Bouncy>().bounceForce;
 			}
 		}
 
+		handleClimb();
+
+		velocity.y = Mathf.Clamp(velocity.y,-maxFallSpeed,maxFallSpeed);
 		this.rigidbody.velocity = velocity;
 	}
 
@@ -67,12 +73,35 @@ public class Player : MonoBehaviour {
 		return hit.collider;
 	}
 
-	void OnTriggerEnter(){
-		canClimb = true;
+	void handleClimb(){
+		if(canClimb && Mathf.Abs(v) >.5f){
+			Debug.Log ("climb");
+			velocity.y = 0;
+			climbing = true;
+			this.transform.position = new Vector3(climbSnap,this.transform.position.y,this.transform.position.z);
+			velocity.x = 0;
+		}
+		if(climbing){
+			velocity.y = v*speed;
+			velocity.x = 0;
+		}
+		if(!canClimb || jump > .5f){
+			climbing = false;
+		}
 	}
 
-	void OnTriggerExit(){
-		canClimb = false;
+	void OnTriggerEnter(Collider col){
+		if(col.gameObject.layer == LayerMask.NameToLayer("Rope")){
+			canClimb = true;
+			climbSnap = col.transform.position.x;
+		}
+	}
+
+	void OnTriggerExit(Collider col){
+		if(col.gameObject.layer == LayerMask.NameToLayer("Rope")){
+			canClimb = false;
+			climbSnap = col.transform.position.x;
+		}
 	}
 
 }
