@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
-
+/*
 
 [CustomPropertyDrawer (typeof (Waypoint))]
 public class WaypointDrawer : PropertyDrawer {
@@ -13,8 +13,9 @@ public class WaypointDrawer : PropertyDrawer {
 	}
 	
 	public static float calculateHeight(SerializedProperty prop){
-		Debug.Log (prop.FindPropertyRelative ("id"));
-		if (prop.FindPropertyRelative ("folded").boolValue)
+		if (prop == null)
+			return EditorUtil.row;
+		if (prop.FindPropertyRelative("folded").boolValue)
 			return EditorUtil.row;
 		return 5 * EditorUtil.row;
 	}
@@ -23,7 +24,7 @@ public class WaypointDrawer : PropertyDrawer {
 		SerializedProperty id = prop.FindPropertyRelative ("id");
 		SerializedProperty speed = prop.FindPropertyRelative ("speed");
 		SerializedProperty open = prop.FindPropertyRelative ("open");
-		SerializedProperty triggeredObject = prop.FindPropertyRelative ("triggeredObject");
+		//SerializedProperty triggeredObject = prop.FindPropertyRelative ("triggeredObject");
 		SerializedProperty folded = prop.FindPropertyRelative ("folded");
 
 		bool fold = folded.boolValue;
@@ -32,15 +33,15 @@ public class WaypointDrawer : PropertyDrawer {
 		GUI.Label (new Rect (pos.x + EditorUtil.buttonSize, pos.y, pos.width - 2 * EditorUtil.buttonSize, EditorUtil.height), "Waypoint #" + id);
 	
 		EditorGUI.indentLevel++;
-		if (!folded.boolValue){
+		//if (!folded.boolValue){
 			EditorGUI.PropertyField (new Rect (pos.x, pos.y + EditorUtil.row, pos.width, EditorUtil.height), speed, new GUIContent("Speed"));
 			EditorGUI.PropertyField (new Rect (pos.x, pos.y + EditorUtil.row, pos.width, EditorUtil.height), open, new GUIContent("Whether this waypoint is accessible"));
-			EditorGUI.PropertyField (new Rect (pos.x, pos.y + EditorUtil.row, pos.width, EditorUtil.height), triggeredObject, new GUIContent("Object triggered when wapoint is reached"));
-		}
+//			EditorGUI.ObjectField (new Rect (pos.x, pos.y + EditorUtil.row, pos.width, EditorUtil.height), triggeredObject, new GUIContent("Object triggered when wapoint is reached"), Trigger.GetType());
+		//}
 		EditorGUI.indentLevel--;
 
 		prop.serializedObject.ApplyModifiedProperties ();
 	}
 	
 	
-}
+}*/

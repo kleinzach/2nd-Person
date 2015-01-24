@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class PathFollower : MonoBehaviour {
-	
+
+	public Path path;
 	public Waypoint nextWaypoint;
 	
 	// Update is called once per frame

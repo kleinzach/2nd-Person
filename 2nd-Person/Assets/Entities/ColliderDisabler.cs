@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Pit : Usable {
+public class ColliderDisabler : Usable {
 
 	public Collider target;
 
