@@ -11,6 +11,9 @@ public class Hero : PathFollower {
 
 	private bool blocked;
 
+	public float textDuration;
+	private float textTime;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -18,16 +21,22 @@ public class Hero : PathFollower {
 	
 	// Update is called once per frame
 	void Update () {
+		textTime -= Time.deltaTime;
 		if(nextWaypoint == null){
 			return;
 		}
 		if(!nextWaypoint.open && !blocked){
 			blocked = true;
 			textbox.text = randomString(blockedText);
+			textTime = textDuration;
 		}
 		if(blocked && nextWaypoint.open){
 			blocked = false;
 			textbox.text = randomString(unblockedText);
+			textTime = textDuration;		
+		}
+		if(textTime <= 0){
+			textbox.gameObject.SetActive(false);
 		}
 	}
 
