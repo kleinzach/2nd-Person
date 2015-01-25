@@ -10,10 +10,13 @@ using System.Reflection;
 public class TestEditor : Editor {
 
 	public void OnSceneGUI(){
-		Tools.current = Path.weird ? Tool.None : Tool.Move;
+		Tools.current =  Tool.None;
 		Transform trans = ((Transform)target);
-		if (!trans.gameObject.name.Contains("Path"))
-			trans.position = Handles.PositionHandle(trans.position, Quaternion.identity);
+		bool path = trans.gameObject.name.Contains ("Path");
+		bool way = trans.gameObject.name.Contains ("Waypoint");
+
+		if (!path && !(way && Path.hide))
+			trans.position = Handles.PositionHandle(trans.position, trans.rotation);
 	}
 	
 	
