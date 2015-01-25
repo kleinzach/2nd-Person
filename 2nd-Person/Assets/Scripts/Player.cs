@@ -40,6 +40,7 @@ public class Player : MonoBehaviour {
 		if(dead){
 			deathTimer -= Time.fixedDeltaTime;
 			velocity.x = 0;
+			velocity.y -= gravity*Time.fixedTime;
 			this.rigidbody.velocity = velocity;
 			if(deathTimer <= 0f){
 				reset();
