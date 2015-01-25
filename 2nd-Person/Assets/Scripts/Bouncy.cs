@@ -17,6 +17,7 @@ public class Bouncy : MonoBehaviour {
 		anim.SetTrigger("spring");
 		Debug.Log ("spring");
 		this.particleSystem.Emit(100);
+		this.audio.Play();
 	}
 
 }
