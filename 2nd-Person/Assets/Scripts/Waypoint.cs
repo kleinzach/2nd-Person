@@ -10,15 +10,16 @@ public class Waypoint : Usable {
 
 	public bool open;
 
-	public Usable target;
+	public Usable[] targets;
 
 	public override void use(){
 		open = true;
 	}
 
 	public void trigger(){
-		if (target != null)
-			target.use ();
+		foreach(Usable target in targets)
+			if (target != null)
+				target.use ();
 	}
 
 	public void Start(){

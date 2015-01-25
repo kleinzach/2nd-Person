@@ -11,4 +11,6 @@ public class UsableEditor : Editor {
 		if (GUILayout.Button ("Use"))
 			u.use();
 	}
+
+
 }
