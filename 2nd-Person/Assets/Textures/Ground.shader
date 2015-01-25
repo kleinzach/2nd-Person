@@ -7,7 +7,7 @@
 	SubShader {
 		Tags { "Queue" = "Transparent" } 
 		Pass {
-			Cull Off
+			Cull Back
 			Blend SrcAlpha OneMinusSrcAlpha
 	
 			CGPROGRAM 
@@ -24,17 +24,17 @@
 			};
 			struct v2f {
 				float4 pos : SV_POSITION;
-				float2 tex : TEXCOORD0;
+				float3 tex : TEXCOORD0;
 			};
 
 			v2f vert(vin v) {
 				v2f vf;
 				vf.pos = mul(UNITY_MATRIX_MVP, v.vertex);
-				vf.tex = vf.pos * _TexScale;
+				vf.tex = v.vertex * _TexScale;
 				return vf;
 			}
 			float4 frag(v2f vf) : COLOR {
-				return tex2D(_Tex, vf.tex.xy);
+				return tex2D(_Tex, vf.tex.xz);
 			}
 	 
 			ENDCG
