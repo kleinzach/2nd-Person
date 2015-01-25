@@ -15,7 +15,7 @@ public class Bouncy : MonoBehaviour {
 
 	public void bounce(){
 		anim.SetTrigger("spring");
-		this.particleSystem.Emit(100);
+		this.particleSystem.Emit(1000);
 		this.audio.Play();
 	}
 
