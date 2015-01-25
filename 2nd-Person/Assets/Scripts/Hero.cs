@@ -8,6 +8,7 @@ public class Hero : PathFollower {
 
 	public string[] blockedText;
 	public string[] unblockedText;
+	public string[] attackText;
 
 	private bool blocked;
 
@@ -32,17 +33,11 @@ public class Hero : PathFollower {
 		}
 		if(!nextWaypoint.open && !blocked && textWaiting <= 0){
 			blocked = true;
-			textbox.transform.parent.gameObject.SetActive(true);
-			textbox.text = randomString(blockedText);
-			textTime = textDuration;
-			textWaiting = textWaitTime;
+			triggerText(blockedText);
 		}
 		if(blocked && nextWaypoint.open){
 			blocked = false;
-			textbox.transform.parent.gameObject.SetActive(true);
-			textbox.text = randomString(unblockedText);
-			textTime = textDuration;
-			textWaiting = textWaitTime;
+			triggerText(unblockedText);
 		}
 		if(textTime <= 0){
 			textbox.transform.parent.gameObject.SetActive(false);
@@ -50,6 +45,22 @@ public class Hero : PathFollower {
 	}
 
 	string randomString(string[] strings){
+		if(strings.Length == 0){
+			return "";
+		}
 		return strings[(int)(Random.value * strings.Length)];
+	}
+
+	void triggerText(string[] strings){
+		if(textWaiting <= 0){
+			textbox.transform.parent.gameObject.SetActive(true);
+			textbox.text = randomString(strings);
+			textTime = textDuration;
+			textWaiting = textWaitTime;
+		}
+	}
+
+	public void attack(){
+		triggerText(attackText);
 	}
 }
