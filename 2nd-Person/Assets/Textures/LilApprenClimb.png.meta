@@ -1,12 +1,9 @@
 fileFormatVersion: 2
-guid: d49defed146c5c242ba387b728e00274
+guid: e66a171e3815ed246aaabe3b11763a1b
 TextureImporter:
   fileIDToRecycleName:
-    21300000: LilApprenRunningSpriteSheet_0
-    21300002: LilApprenRunningSpriteSheet_1
-    21300004: LilApprenRunningSpriteSheet_2
-    21300006: LilApprenRunningSpriteSheet_3
-    21300008: LilApprenRunningSpriteSheet_4
+    21300000: LilApprenClimb_0
+    21300002: LilApprenClimb_1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -27,7 +24,7 @@ TextureImporter:
   generateCubemap: 0
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 2048
+  maxTextureSize: 1024
   textureSettings:
     filterMode: -1
     aniso: 16
@@ -48,7 +45,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: LilApprenRunningSpriteSheet_0
+    - name: LilApprenClimb_0
       rect:
         serializedVersion: 2
         x: 0
@@ -58,41 +55,11 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: LilApprenRunningSpriteSheet_1
+    - name: LilApprenClimb_1
       rect:
         serializedVersion: 2
         x: 512
         y: 1536
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: LilApprenRunningSpriteSheet_2
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 1536
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: LilApprenRunningSpriteSheet_3
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 1536
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: LilApprenRunningSpriteSheet_4
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 1024
         width: 512
         height: 512
       alignment: 0

@@ -62,6 +62,7 @@ public class Player : MonoBehaviour {
 		velocity.y = Mathf.Max(velocity.y,-maxFallSpeed);
 
 		anim.SetBool("Jump",!onGround);
+		anim.SetBool("Climb",climbing);
 		
 		if(other != null){
 			if(other.gameObject.layer == LayerMask.NameToLayer("Mushroom")){
@@ -71,6 +72,9 @@ public class Player : MonoBehaviour {
 				springing = true;
 			}
 		}
+
+		anim.SetBool("Hanging",climbing && Mathf.Abs(velocity.y)<.25f);
+
 		if(Mathf.Abs(h) > .1)
 			scalar.transform.localScale = new Vector3(h > 0?-1:1,1,1);
 		this.rigidbody.velocity = velocity;
