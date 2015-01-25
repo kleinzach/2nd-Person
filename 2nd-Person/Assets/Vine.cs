@@ -6,7 +6,7 @@ using System.Collections;
 public class Vine : MonoBehaviour {
 
 	public int index = 0;
-	public float segmentHeight = 0.1f;
+	public float segmentHeight = 2f;
 
 	private int vines = 8;
 
