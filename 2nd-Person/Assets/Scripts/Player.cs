@@ -8,9 +8,6 @@ public class Player : MonoBehaviour {
 	public float jumpForce = 10;
 	public float gravity = -9.81f;
 
-	public float jumpTime;
-	private float jumping;
-
 	private float distToGround = 0;
 
 	private Vector3 velocity = new Vector3();
@@ -24,8 +21,15 @@ public class Player : MonoBehaviour {
 	public bool canClimb = false;
 	public float climbSnap = 0;
 
+	public bool springing;
+
+	private Animator anim;
+
+	public Transform scalar;
+
 	void Start(){
 		distToGround = collider.bounds.extents.y;
+		anim = GetComponent<Animator>();
 	}
 
 	// Update is called once per frame
@@ -40,32 +44,35 @@ public class Player : MonoBehaviour {
 
 		velocity.x = h * speed;
 
-		jumping -= Time.fixedDeltaTime;
-		if(onGround && jump > .5f && other.gameObject.layer != LayerMask.NameToLayer("Mushroom")){
-			jumping = jumpTime;
-		}
-		if(jump > .5f && jumping > 0){
-			velocity.y += jumpForce;
-		}
-		else if(jump <= .5f){
-			jumping = 0;
-		}
-		if(!onGround && jumping <= 0 && !climbing){
+		anim.SetBool("Run",(Mathf.Abs(h) > .125));
 
-			velocity.y -= gravity;
+		if(onGround && jump > .5f && other.gameObject.tag != "Spring"){
+			velocity.y = jumpForce;
+			springing = false;
+		}
+		if(jump < .5f && velocity.y > 0 && !springing){
+			velocity.y = 0;
+		}
+		if(!onGround && !climbing){
+			velocity.y -= gravity * Time.fixedDeltaTime;
 		}
 
 		handleClimb();
 
 		velocity.y = Mathf.Max(velocity.y,-maxFallSpeed);
+
+		anim.SetBool("Jump",!onGround);
 		
 		if(other != null){
 			if(other.gameObject.layer == LayerMask.NameToLayer("Mushroom")){
 				Bouncy b = other.gameObject.GetComponent<Bouncy>();
 				velocity.y = b.bounceForce;
 				b.bounce();
+				springing = true;
 			}
 		}
+		if(Mathf.Abs(h) > .1)
+			scalar.transform.localScale = new Vector3(h > 0?-1:1,1,1);
 		this.rigidbody.velocity = velocity;
 	}
 
@@ -92,8 +99,7 @@ public class Player : MonoBehaviour {
 		}
 		if(climbing && jump > .5f){
 			climbing = false;
-			jumping = jumpTime;
-			velocity.y += jumpForce;
+			velocity.y = jumpForce;
 		}
 	}
 
@@ -113,6 +119,15 @@ public class Player : MonoBehaviour {
 
 	public void reset(){
 		Application.LoadLevel(Application.loadedLevel);
+	}
+
+	public void handleState(Collider other){
+		if(other != null){
+			anim.SetBool("Run",Mathf.Abs(velocity.x)>.1f );
+		}
+		if(other.gameObject == null){
+			anim.SetBool("Jump",true);
+		}
 	}
 
 }
