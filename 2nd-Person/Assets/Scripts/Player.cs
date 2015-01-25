@@ -111,4 +111,8 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	public void reset(){
+		Application.LoadLevel(Application.loadedLevel);
+	}
+
 }

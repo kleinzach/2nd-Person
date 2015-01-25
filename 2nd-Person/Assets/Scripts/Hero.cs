@@ -52,4 +52,8 @@ public class Hero : PathFollower {
 	string randomString(string[] strings){
 		return strings[(int)(Random.value * strings.Length)];
 	}
+
+	public void attack(){
+
+	}
 }
