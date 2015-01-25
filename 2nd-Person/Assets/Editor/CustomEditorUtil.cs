@@ -28,7 +28,7 @@ public class CustomEditorUtil{
 	}
 
 	public static bool ex(){
-		return GUILayout.Button("", (GUIStyle)"WinBtnCloseWin", GUILayout.Width(20));
+		return GUILayout.Button("", (GUIStyle)"WinBtnCloseWin", GUILayout.Width(20), GUILayout.Height(20));
 	}
 	
 	public static bool folder(bool folded){
@@ -46,6 +46,51 @@ public class CustomEditorUtil{
 	public static void text(string text){
 		GUILayout.Label (text);
 	}
+
+
+	public static T[] array<T> (string label, T[] src) where T: Object{
+		T[] t = src;
+
+		GUILayout.BeginHorizontal();
+		GUILayout.Space(14);
+		text(label);
+		if (plus()) {
+			t = new T[src.Length + 1];
+			for(int i = 0; i < src.Length; i++)
+				t[i] = src[i];
+		}
+		if (minus () && t.Length > 0) {
+			t = new T[src.Length - 1];
+			for(int i = 0; i < t.Length; i++)
+				t[i] = src[i];
+		}
+		GUILayout.EndHorizontal();
+
+		
+		GUILayout.BeginHorizontal();
+		GUILayout.Space(20);
+		GUILayout.BeginVertical();
+		for(int i = 0; i < t.Length; i++){
+			GUILayout.BeginHorizontal();
+			t[i] = (T)EditorGUILayout.ObjectField(t[i], typeof(T), true, null);
+			if(ex ()){
+				T[] tt = new T[src.Length - 1];
+				int c = 0;
+				for(int j = 0; j < i; j++)
+					tt[c++] = t[j];
+				for(int j = i + 1; j < t.Length; j++)
+					tt[c++] = t[j];
+				t = tt;
+			}
+			GUILayout.EndHorizontal();
+		}
+
+		GUILayout.EndVertical();
+		GUILayout.EndHorizontal();
+		return t;
+	}
+
+
 
 	public static void foldLines(float x, float y, float[] i){
 		if (i.Length == 0)
