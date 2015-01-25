@@ -96,7 +96,10 @@ public class Player : MonoBehaviour {
 
 	Collider Ground() {
 		RaycastHit hit;
-		Physics.Raycast(transform.position, -Vector3.up, out hit, distToGround + 0.1f);
+		Physics.Raycast(transform.position + new Vector3(.25f,0,0), -Vector3.up, out hit, distToGround + 0.1f);
+		if(!hit.collider){
+			Physics.Raycast(transform.position + new Vector3(.25f,0,0), -Vector3.up, out hit, distToGround + 0.1f);
+		}
 		return hit.collider;
 	}
 
