@@ -30,6 +30,7 @@ public class Enemy : PathFollower {
 				audio.loop = true;
 				chomping = true;
 			}
+			particleSystem.Emit(2);
 		}
 		else{
 			audio.loop = false;
