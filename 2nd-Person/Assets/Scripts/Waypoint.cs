@@ -18,8 +18,8 @@ public class Waypoint : Usable {
 
 	public void trigger(){
 		foreach(Usable target in targets)
-		if (target != null)
-			target.use ();
+			if (target != null)
+				target.use ();
 	}
 
 	public void Start(){
