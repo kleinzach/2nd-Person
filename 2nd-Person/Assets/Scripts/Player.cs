@@ -162,4 +162,8 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	public void quit(){
+		Application.Quit();
+	}
+
 }
