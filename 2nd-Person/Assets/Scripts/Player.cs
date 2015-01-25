@@ -23,8 +23,13 @@ public class Player : MonoBehaviour {
 
 	public bool springing;
 
+	private Animator anim;
+
+	public Transform scalar;
+
 	void Start(){
 		distToGround = collider.bounds.extents.y;
+		anim = GetComponent<Animator>();
 	}
 
 	// Update is called once per frame
@@ -38,6 +43,8 @@ public class Player : MonoBehaviour {
 		bool onGround = other != null;
 
 		velocity.x = h * speed;
+
+		anim.SetBool("Run",(Mathf.Abs(h) > .125));
 
 		if(onGround && jump > .5f && other.gameObject.tag != "Spring"){
 			velocity.y = jumpForce;
@@ -53,6 +60,8 @@ public class Player : MonoBehaviour {
 		handleClimb();
 
 		velocity.y = Mathf.Max(velocity.y,-maxFallSpeed);
+
+		anim.SetBool("Jump",!onGround);
 		
 		if(other != null){
 			if(other.gameObject.layer == LayerMask.NameToLayer("Mushroom")){
@@ -62,6 +71,8 @@ public class Player : MonoBehaviour {
 				springing = true;
 			}
 		}
+		if(Mathf.Abs(h) > .1)
+			scalar.transform.localScale = new Vector3(h > 0?-1:1,1,1);
 		this.rigidbody.velocity = velocity;
 	}
 
@@ -108,6 +119,15 @@ public class Player : MonoBehaviour {
 
 	public void reset(){
 		Application.LoadLevel(Application.loadedLevel);
+	}
+
+	public void handleState(Collider other){
+		if(other != null){
+			anim.SetBool("Run",Mathf.Abs(velocity.x)>.1f );
+		}
+		if(other.gameObject == null){
+			anim.SetBool("Jump",true);
+		}
 	}
 
 }
