@@ -13,8 +13,8 @@ public class WaypointEditor : Editor
 		w.speed = EditorGUILayout.FloatField("Speed", w.speed);
 		w.transform.position = (Vector2)EditorGUILayout.Vector2Field("Position", w.transform.position);
 		w.next = (Waypoint)EditorGUILayout.ObjectField("Next Waypoint", w.next, typeof(Waypoint), true, null);
-		foreach(int i = 0; i < w.target.length; i++)
-			w.target[i] = EditorGUILayout.ObjectField("Usable #" + i, w.target[i], typeof(Usable), true, null);
+		for(int i = 0; i < w.targets.Length; i++)
+			w.targets[i] = (Usable)EditorGUILayout.ObjectField("Targets #" + i, w.targets[i], typeof(Usable), true, null);
 		w.open = EditorGUILayout.Toggle("Available", w.open);
 		EditorGUILayout.BeginHorizontal();
 		if (GUILayout.Button ("Use"))
