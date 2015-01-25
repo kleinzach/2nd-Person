@@ -12,6 +12,8 @@ public class Enemy : PathFollower {
 	public float killDistance;
 	public float attackDistance;
 
+	private bool chomping;
+
 	// Use this for initialization
 	void Start () {
 		p = GameObject.FindObjectOfType<Player>();
@@ -23,6 +25,15 @@ public class Enemy : PathFollower {
 		Vector3 pos = this.transform.position;
 		if((p.transform.position - pos).magnitude < attackDistance){
 			anim.SetTrigger("Attack");
+			if(!chomping){
+				audio.Play();
+				audio.loop = true;
+				chomping = true;
+			}
+		}
+		else{
+			audio.loop = false;
+			chomping = false;
 		}
 		if((p.transform.position - pos).magnitude < killDistance){
 			p.reset();
