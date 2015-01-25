@@ -18,6 +18,7 @@ public class Vine : MonoBehaviour {
 	private float oldHeight = 1;
 	// Use this for initialization
 	void Start () {
+		renderer.sortingLayerName = "Scene";
 		m = new Mesh ();
 		GetComponent<MeshFilter>().mesh = null;
 		GetComponent<MeshFilter>().mesh = m;

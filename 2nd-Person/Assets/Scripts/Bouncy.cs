@@ -11,6 +11,7 @@ public class Bouncy : MonoBehaviour {
 
 	void Start(){
 		anim = GetComponent<Animator>();
+		renderer.sortingLayerName = "Scene";
 	}
 
 	public void bounce(){

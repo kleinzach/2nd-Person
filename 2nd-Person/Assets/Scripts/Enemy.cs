@@ -39,9 +39,11 @@ public class Enemy : PathFollower {
 		if((p.transform.position - pos).magnitude < killDistance){
 			p.die();
 		}
-		if((h.transform.position - pos).magnitude < attackDistance){
-			h.attack();
-			Destroy(this.gameObject);
+		if(h != null){
+			if((h.transform.position - pos).magnitude < attackDistance){
+				h.attack();
+				Destroy(this.gameObject);
+			}
 		}
 	}
 }
