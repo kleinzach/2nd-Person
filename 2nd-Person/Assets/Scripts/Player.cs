@@ -35,6 +35,13 @@ public class Player : MonoBehaviour {
 		anim = GetComponent<Animator>();
 	}
 
+	void Update(){
+		h = Input.GetAxis("Horizontal");
+		v = Input.GetAxis("Vertical");
+		
+		jump = Input.GetAxis("Jump");
+	}
+
 	// Update is called once per frame
 	void FixedUpdate () {
 		if(dead){
@@ -47,11 +54,6 @@ public class Player : MonoBehaviour {
 			}
 			return;
 		}
-
-		h = Input.GetAxis("Horizontal");
-		v = Input.GetAxis("Vertical");
-
-		jump = Input.GetAxis("Jump");
 
 		Collider other = Ground();
 		bool onGround = other != null;
