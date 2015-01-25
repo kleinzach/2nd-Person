@@ -6,6 +6,14 @@ public class SingleUsePlayerDetector : MonoBehaviour {
 
 	public Usable[] target;
 
+	public Animator anim;
+
+	public bool used = false;
+
+	void Start(){
+		anim = GetComponent<Animator>();
+	}
+
 	void OnCollisionEnter(Collision col){
 		if(col.gameObject.tag == "Player"){
 			activate();
@@ -13,11 +21,18 @@ public class SingleUsePlayerDetector : MonoBehaviour {
 	}
 	
 	public void activate(){
-		foreach(Usable u in target)
+		if(used){
+			return;
+		}
+		this.collider.isTrigger = true;
+		used = true;
+		foreach(Usable u in target){
 			if(u != null){
 				u.use();
 			}
-		Destroy(this.gameObject);
+		}
+
+		anim.SetTrigger("Use");
 	}
 	
 	public void OnDrawGizmosSelected(){
