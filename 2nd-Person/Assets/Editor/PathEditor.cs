@@ -13,15 +13,16 @@ public class PathEditor : Editor {
 		CustomEditorUtil.text(p.name);
 		EditorGUI.indentLevel++;
 		EditorGUILayout.BeginHorizontal ();
+		p.color = EditorGUILayout.ColorField ("Gizmo Color", p.color);
 		if (GUILayout.Button("Hide path handle"))
-			Path.weird = !Path.weird;
+			Path.hide = !Path.hide;
 		EditorGUILayout.EndHorizontal ();
 		if (GUI.changed)
 			EditorUtility.SetDirty (target);
 	}
 
 	public void OnSceneGUI()	{
-		Path p = (Path)target;
+		Path p = (Path) target;
 		foreach (Waypoint w in p.waypoints())
 			w.transform.position = Handles.PositionHandle(w.transform.position, Quaternion.identity);
 	}

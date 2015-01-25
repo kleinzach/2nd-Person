@@ -6,6 +6,6 @@ public class ColliderDisabler : Usable {
 	public Collider target;
 
 	public override void use(){
-		target.isTrigger = false;
+		target.isTrigger = target.isTrigger;
 	}
 }

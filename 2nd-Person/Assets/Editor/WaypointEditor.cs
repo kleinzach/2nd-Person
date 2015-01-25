@@ -27,18 +27,35 @@ public class WaypointEditor : Editor
 		if (GUI.changed)
 			EditorUtility.SetDirty (target);
 	}
-
+	/*
 	public void OnSceneGUI()	{
-		Waypoint www = ((Waypoint)target);
-		Transform t = www.transform.parent;
-		if (t != null){
-			Path p = t.gameObject.GetComponent<Path>();
-			if (p != null)
-				foreach (Waypoint w in p.waypoints())
-					if (www != w)
-						w.transform.position = Handles.PositionHandle(w.transform.position, Quaternion.identity);
+		Waypoint w = ((Waypoint)target);
+		drawPoint(w.transform.position, 0.5f, Color.cyan);
+		if (w.next != null)
+			drawArrow(w.transform.position, w.next.transform.position, 3, Color.magenta);
+		foreach (Usable u in w.targets)
+		if (u != null){
+			drawPoint(u.transform.position, 0.5f, Color.cyan);
+			drawArrow(w.transform.position, u.transform.position, 3, Color.white);
 		}
+		w.transform.position = Handles.PositionHandle(w.transform.position, Quaternion.identity);
 	}
 
+	private void drawArrow(Vector3 position, Vector3 dest, float size, Color c){
+		//if (Event.current.type == EventType.Layout)
+		Handles.color = c;
+		Handles.DrawLine (position, dest);
+		//GUIUtility.GetControlID()
+		Vector3 d = (dest - position).normalized * size;
+		Handles.ArrowCap (1, dest - d, Quaternion.FromToRotation (d, Vector3.back), size);
+	}
+	
+	private void drawPoint(Vector3 point, float size, Color c){
+		//if (Event.current.type == EventType.Layout)
+		Handles.color = c;
+		Handles.DrawSolidDisc (point, Camera.current.transform.position - point, size);
+		//GUIUtility.GetControlID()
+	}
+	*/
 
 }

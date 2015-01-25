@@ -8,10 +8,28 @@ public class SingleUsePlayerDetector : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col){
 		if(col.gameObject.tag == "Player"){
-			foreach(Usable u in target){
+			activate();
+		}
+	}
+	
+	public void activate(){
+		foreach(Usable u in target)
+			if(u != null){
 				u.use();
 			}
-			Destroy(this.gameObject);
+		Destroy(this.gameObject);
+	}
+	
+	public void OnDrawGizmosSelected(){
+		drawLinks();
+	}
+	
+	public void drawLinks(){
+		Vector3 v = new Vector3 (0.05f, 0.05f, 0.05f);
+		Gizmos.color = Color.yellow;
+		foreach(Usable u in target){
+			if (u != null)
+				Gizmos.DrawLine (transform.position + v, u.transform.position + v);
 		}
 	}
 }
