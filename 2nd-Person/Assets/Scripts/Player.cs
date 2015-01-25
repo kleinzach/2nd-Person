@@ -39,6 +39,8 @@ public class Player : MonoBehaviour {
 	void FixedUpdate () {
 		if(dead){
 			deathTimer -= Time.fixedDeltaTime;
+			velocity.x = 0;
+			this.rigidbody.velocity = velocity;
 			if(deathTimer <= 0f){
 				reset();
 			}
@@ -141,6 +143,7 @@ public class Player : MonoBehaviour {
 			anim.SetTrigger("Die");
 			dead = true;
 			deathTimer = 2;
+			velocity.x = 0;
 		}	
 	}
 
