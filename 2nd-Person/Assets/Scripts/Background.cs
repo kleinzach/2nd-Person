@@ -6,7 +6,11 @@ public class Background : MonoBehaviour {
 	public float scrollSpeed;
 	public float x;
 	private float lastX;
-	
+
+	void Start () {
+		x = Random.value;
+	}
+
 	void Update () {
 		float dx = x - transform.position.x * scrollSpeed;
 		if (lastX != dx){
