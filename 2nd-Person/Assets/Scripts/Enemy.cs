@@ -36,7 +36,7 @@ public class Enemy : PathFollower {
 			chomping = false;
 		}
 		if((p.transform.position - pos).magnitude < killDistance){
-			p.reset();
+			p.die();
 		}
 		if((h.transform.position - pos).magnitude < attackDistance){
 			h.attack();

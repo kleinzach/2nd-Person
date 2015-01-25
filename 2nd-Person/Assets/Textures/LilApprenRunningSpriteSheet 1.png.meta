@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: d49defed146c5c242ba387b728e00274
+guid: f5ee910f211215345b57d92ff7e65124
 TextureImporter:
   fileIDToRecycleName:
-    21300000: LilApprenRunningSpriteSheet_0
-    21300002: LilApprenRunningSpriteSheet_1
-    21300004: LilApprenRunningSpriteSheet_2
-    21300006: LilApprenRunningSpriteSheet_3
-    21300008: LilApprenRunningSpriteSheet_4
+    21300000: LilApprenRunningSpriteSheet 1_0
+    21300002: LilApprenRunningSpriteSheet 1_1
+    21300004: LilApprenRunningSpriteSheet 1_2
+    21300006: LilApprenRunningSpriteSheet 1_3
+    21300008: LilApprenRunningSpriteSheet 1_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -29,7 +29,7 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
+    filterMode: 2
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -48,7 +48,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: LilApprenRunningSpriteSheet_0
+    - name: LilApprenRunningSpriteSheet 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -58,7 +58,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: LilApprenRunningSpriteSheet_1
+    - name: LilApprenRunningSpriteSheet 1_1
       rect:
         serializedVersion: 2
         x: 512
@@ -68,7 +68,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: LilApprenRunningSpriteSheet_2
+    - name: LilApprenRunningSpriteSheet 1_2
       rect:
         serializedVersion: 2
         x: 1024
@@ -78,7 +78,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: LilApprenRunningSpriteSheet_3
+    - name: LilApprenRunningSpriteSheet 1_3
       rect:
         serializedVersion: 2
         x: 1536
@@ -88,7 +88,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: LilApprenRunningSpriteSheet_4
+    - name: LilApprenRunningSpriteSheet 1_4
       rect:
         serializedVersion: 2
         x: 512

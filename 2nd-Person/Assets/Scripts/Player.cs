@@ -27,6 +27,9 @@ public class Player : MonoBehaviour {
 
 	public Transform scalar;
 
+	private bool dead = false;
+	private float deathTimer = 5;
+
 	void Start(){
 		distToGround = collider.bounds.extents.y;
 		anim = GetComponent<Animator>();
@@ -34,6 +37,14 @@ public class Player : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
+		if(dead){
+			deathTimer -= Time.fixedDeltaTime;
+			if(deathTimer <= 0f){
+				reset();
+			}
+			return;
+		}
+
 		h = Input.GetAxis("Horizontal");
 		v = Input.GetAxis("Vertical");
 
@@ -123,6 +134,14 @@ public class Player : MonoBehaviour {
 
 	public void reset(){
 		Application.LoadLevel(Application.loadedLevel);
+	}
+
+	public void die(){
+		if(!dead){
+			anim.SetTrigger("Die");
+			dead = true;
+			deathTimer = 2;
+		}	
 	}
 
 	public void handleState(Collider other){
