@@ -1,7 +1,11 @@
-﻿Shader "Custom/Ground" {
+﻿Shader "Custom/Vine" {
 	Properties {
 		_Tex ("Tileset", 2D) = "white" {} 
-		_TexScale ("Texture Scale", Float) = 1 
+
+		_Vines ("Vines", Float) = 8
+
+		_Height ("Segment Height", Float) = 0
+		_Length ("Vine Length", Float) = 8
 	}
 	
 	SubShader {
