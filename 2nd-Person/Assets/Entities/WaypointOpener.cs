@@ -12,4 +12,19 @@ public class WaypointOpener : Usable {
 		}
 		GameObject.Destroy(target);
 	}
+
+	public void OnDrawGizmosSelected(){
+		drawLinks();
+	}
+	
+	public void drawLinks(){
+		Vector3 v = new Vector3 (0.05f, 0.05f, 0.05f);
+
+		Gizmos.color = Color.green;
+		if (blockedWaypoint != null)
+			Gizmos.DrawLine (transform.position + v, blockedWaypoint.transform.position + v);
+		Gizmos.color = Color.red;
+		if (target != null)
+			Gizmos.DrawLine (transform.position + v, target.transform.position + v);
+	}
 }
