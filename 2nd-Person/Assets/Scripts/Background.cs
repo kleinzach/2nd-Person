@@ -9,7 +9,7 @@ public class Background : MonoBehaviour {
 	public string sortinglayer = "Default";
 
 	void Start () {
-		x = Random.value;
+		//x = Random.value;
 	}
 
 	void Update () {
