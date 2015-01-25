@@ -1,7 +1,15 @@
 fileFormatVersion: 2
 guid: a1e147336444ada4bb7ce7d25292a536
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: GameAssetsRepacked_0
+    21300002: GameAssetsRepacked_1
+    21300004: GameAssetsRepacked_2
+    21300006: GameAssetsRepacked_3
+    21300008: GameAssetsRepacked_4
+    21300010: GameAssetsRepacked_5
+    21300012: GameAssetsRepacked_6
+    21300014: GameAssetsRepacked_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -25,13 +33,13 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -42,6 +50,86 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: GameAssetsRepacked_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 1721
+        width: 617
+        height: 322
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GameAssetsRepacked_1
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 1527
+        width: 358
+        height: 518
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GameAssetsRepacked_2
+      rect:
+        serializedVersion: 2
+        x: 1211
+        y: 1563
+        width: 574
+        height: 450
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GameAssetsRepacked_3
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 1149
+        width: 281
+        height: 484
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GameAssetsRepacked_4
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 845
+        width: 716
+        height: 256
+      alignment: 2
+      pivot: {x: .5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GameAssetsRepacked_5
+      rect:
+        serializedVersion: 2
+        x: 1819
+        y: 1071
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GameAssetsRepacked_6
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 13
+        width: 1848
+        height: 802
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GameAssetsRepacked_7
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 827
+        width: 1175
+        height: 592
+      alignment: 2
+      pivot: {x: .5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
