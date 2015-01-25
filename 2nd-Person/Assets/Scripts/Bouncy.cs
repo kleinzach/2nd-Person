@@ -11,13 +11,10 @@ public class Bouncy : MonoBehaviour {
 
 	void Start(){
 		anim = GetComponent<Animator>();
-		if(anim != null){
-			anim.Play("spring", -1, 10f);
-		}
 	}
 
 	public void bounce(){
-		anim.Play("spring", -1, 0f);
+		anim.SetTrigger("spring");
 		Debug.Log ("spring");
 	}
 
